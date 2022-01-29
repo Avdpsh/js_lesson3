@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>39 Пример</title>
+</head>
+
+<body>
+  <script>
+      alert('Введите три переменных');
+      let a = prompt('Введите значение а', '');
+      let b = prompt('Введите значение b', '');
+      let c = prompt('Введите значение c', '');
+
+
+      let calcD = (a, b, c) => b * b - 4 * a * c;  // стрелочная функция
+
+
+      function isNumber(value) {            //функция проверки на число
+          if (value.replace(/\s/g, '').length === 0 || isNaN(value))
+            return true;
+          else
+            return false;
+      }
+      /*
+      *проверка на пустой ввод
+      *проверка на ввод пробелов
+      *удаление пробелов до и после переменной
+      *проверка на число
+      *проверка на переполнение
+      *стрелочная функция
+      */
+
+
+      if ((a.length === 0) || (b.length === 0) || (c.length === 0)) {             //проверка на пустой ввод
+          alert('Введите все переменные, пустой ввод не подходит');
+
+      } else if (a.trim() == '' || b.trim() == '' || c.trim() == '') {            //проверка на пробелы
+                    alert('Введите переменные, пробелы не подходят');
+
+              } else if (!isNumber(a) && !isNumber(b) && !isNumber(c)) {             //проверка на число
+
+                          if (Number.isSafeInteger(+a) && Number.isSafeInteger(+b) && Number.isSafeInteger(+c)) {
+                                                                                   //проверка на переполнение
+                              let discriminant = calcD(a, b, c);
+                              if (Number.isSafeInteger(discriminant))              //проверка на переполнение результата
+                                  alert('D = ' + discriminant);
+                              else
+                                  alert('Превышено допустимое значение РЕЗУЛЬТАТА вычисления записаного в память согласно стандарту IEEE-754')
+
+                          } else 
+                              alert('Превышено допустимое значение числа ПЕРЕМЕННОЙ записаного в память согласно стандарту IEEE-754');
+
+                    } else 
+                          alert('Для вычисления дискриминанта нужны числа');
+                
+
+  </script>
+
+</body>
+
+</html>
